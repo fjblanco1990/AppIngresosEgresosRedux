@@ -9,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class AuthService {
-  private dataUser! : UserLoginModel;
+
   constructor(public auth: AngularFireAuth, public fireStore: AngularFirestore) { }
 
   //Metodo se encarga de avisarnos cuando haya algun cambio con la autenticacion o cuando se cierra sesion , valida cuando no esta autenticado
