@@ -4,38 +4,49 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { Router, Routes } from '@angular/router';
 import { inject } from '@angular/core/testing';
+import { UserLoginModel } from 'src/app/models/users-login.model';
+import { SweetAlertService } from 'src/app/service/sweetAlert.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styles: [
-  ]
+  styles: [],
+  providers: [SweetAlertService]
 })
 export class RegisterComponent implements OnInit {
 
   registerFrom!: FormGroup;
-  constructor( private fb: FormBuilder, private authService: AuthService, @Inject(Router) private router: Router) { }
+  private dataUser! : UserLoginModel;
+  private mensajes = {
+      msjExitoso: 'registro',
+  }
+  constructor( private fb: FormBuilder, private authService: AuthService, @Inject(Router) private router: Router, private alertService: SweetAlertService) { }
 
   ngOnInit(): void {
+    this.InicializarForm();
+  }
+
+  InicializarForm() {
     this.registerFrom = this.fb.group({
-          nombre: ['', Validators.required],
-          correo: ['', [Validators.required, Validators.email]],
-          password: ['', Validators.required]
+      nombre: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     })
   }
 
   crearUsuario() {
+    this.alertService.Loading();
     if (this.registerFrom.invalid) {
       return;
     } 
-    const { nombre, correo, password } = this.registerFrom.value;
-    this.authService.CrearUsuario(nombre, correo, password).then( credential => {
+    this.dataUser = this.registerFrom.value;
+    this.authService.CrearUsuario(this.dataUser).then( credential => {
+      this.alertService.minExitoso(this.mensajes.msjExitoso);
       this.router.navigate(['/']);
       
     })
     .catch( error => {
-      console.error(error);
-      
+      this.alertService.minError(error);      
     })
   }
 
