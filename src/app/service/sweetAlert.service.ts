@@ -20,13 +20,12 @@ export class SweetAlertService {
                 toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
         });
-    
         Toast.fire({
             icon: 'success',
             title: 'El ' + mensaje + ' se creo con exito'
         });
     }
-    
+
     minExitosoGeneral(mensaje: any): any {
         const Toast = Swal.mixin({
             toast: true,
@@ -39,13 +38,12 @@ export class SweetAlertService {
                 toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
         });
-    
         Toast.fire({
             icon: 'success',
             title:  mensaje
         });
     }
-    
+
     minExitosoActualizar(mensaje: any): any {
         const Toast = Swal.mixin({
             toast: true,
@@ -58,13 +56,12 @@ export class SweetAlertService {
                 toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
         });
-    
         Toast.fire({
             icon: 'success',
             title: 'El ' + mensaje + ' se actualizo con exito.'
         });
     }
-    
+
     minExitosoEliminar(mensaje: any): any {
         const Toast = Swal.mixin({
             toast: true,
@@ -77,13 +74,12 @@ export class SweetAlertService {
                 toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
         });
-    
         Toast.fire({
             icon: 'success',
             title: 'El ' + mensaje + ' se elimino con exito.'
         });
     }
-    
+
     minError(mensaje: any): any {
         const Toast = Swal.mixin({
             toast: true,
@@ -96,13 +92,12 @@ export class SweetAlertService {
                 toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
         });
-    
         Toast.fire({
             icon: 'error',
             title: mensaje
         });
     }
-    
+
     minAdvertencia(mensaje: any): any {
         const Toast = Swal.mixin({
             toast: true,
@@ -115,13 +110,12 @@ export class SweetAlertService {
                 toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
         });
-    
         Toast.fire({
             icon: 'warning',
             title: mensaje
         });
     }
-    
+
     minInformativo(mensaje: any): any {
         const Toast = Swal.mixin({
             toast: true,
@@ -134,15 +128,14 @@ export class SweetAlertService {
                 toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
         });
-    
         Toast.fire({
             icon: 'info',
             title: mensaje
         });
     }
-    
+
 //alert big
-      
+
     Exitoso(mensaje: any): any {
           Swal.fire({
             title: 'Excelente',
@@ -154,8 +147,7 @@ export class SweetAlertService {
             iconColor: '#339C02'
         })
     }
-    
-    
+
     Error(mensaje: any): any {
           Swal.fire({
             title: 'Opsssss!',
@@ -167,7 +159,7 @@ export class SweetAlertService {
             iconColor: '#C70000'
         })
     }
-    
+
     Advertencia(mensaje: any): any {
         Swal.fire({
             title: 'Advertencia',
@@ -179,7 +171,7 @@ export class SweetAlertService {
             iconColor: '#FE8B00'
         })
     }
-    
+
     Confirmacion(mensaje: any): any {
         Swal.fire({
             title: 'Advertencia',
@@ -201,20 +193,19 @@ export class SweetAlertService {
             }
           })
     }
-    
+
     //Loading
-     
+
     Loading() {
     Swal.fire({
         title: 'Ingresando....',
         allowOutsideClick: false,
         didOpen: () => {
             Swal.showLoading();
-           
             },
         });
     }
-    
+
     OffSeewtAlert() {
         Swal.close();
     }

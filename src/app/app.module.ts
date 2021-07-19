@@ -8,6 +8,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 //Modulos
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './app.reducer';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -20,6 +22,9 @@ import { DetalleComponent } from './ingreso-egreso/detalle/detalle.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
 
 
 
@@ -43,7 +48,16 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    StoreModule.forRoot(
+      appReducers,
+     {runtimeChecks:
+       {strictStateImmutability: false, strictActionImmutability: false}
+     }),
+     StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states cuantos estados queremos mantener en nuestras herramientas
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
