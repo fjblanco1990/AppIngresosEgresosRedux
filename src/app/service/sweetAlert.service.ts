@@ -136,7 +136,7 @@ export class SweetAlertService {
 
 //alert big
 
-    Exitoso(mensaje: any): any {
+    ExitosoMensaje(mensaje: any): any {
           Swal.fire({
             title: 'Excelente',
             text: mensaje,
@@ -147,6 +147,18 @@ export class SweetAlertService {
             iconColor: '#339C02'
         })
     }
+
+    ExitosoTitle(title:any, mensaje: any,): any {
+        Swal.fire({
+          title: title,
+          text: mensaje,
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#339C02',
+          confirmButtonText: 'Aceptar',
+          iconColor: '#339C02'
+      })
+  }
 
     Error(mensaje: any): any {
           Swal.fire({
