@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Store } from '@ngrx/store';
 import { GlobalState } from '../app.reducer';
 import * as authActions from '../auth/auth.actions';
+import * as ingresoEgresoActions from '../ingreso-egreso/ingreso-egreso.actions';
 import { Subscription } from 'rxjs';
 
 @Injectable({
@@ -39,6 +40,7 @@ export class AuthService {
           this._user = user;
 
           this.store.dispatch(authActions.setUser({user}));
+          this.store.dispatch(ingresoEgresoActions.unSetItems());
 
         })
       } else {

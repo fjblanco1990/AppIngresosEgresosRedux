@@ -41,7 +41,7 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
     this.store.dispatch( ui.isLoading() );
     if (this.ingresoEgresoForm.valid) {
       const { descripcion, monto } = this.ingresoEgresoForm.value;
-      const ingresoEgreso = new IngresoEgresoModel(descripcion, monto, this.tipo);
+      const ingresoEgreso = new IngresoEgresoModel(descripcion, monto, this.tipo, '');
       this.ingresoEgresoService.crearIngresoEgreso(ingresoEgreso)
          .then( () => {
            this.store.dispatch(ui.stopLoading());

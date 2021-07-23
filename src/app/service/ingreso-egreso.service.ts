@@ -19,7 +19,7 @@ export class IngresoEgresoService {
 
   //para estar pendiente de lo que suceda
   initIngresoEgresoListener(uid?: string) {
-      this.fireStore.collection(`${uid}/ingreso-egreso/items`).snapshotChanges()
+      return this.fireStore.collection(`${uid}/ingreso-egreso/items`).snapshotChanges()
       .pipe(
         map( snapShot =>  // sirve para retornar lo que venga en sanpshotpara barrer cada uno de los elementos y retorna lo que se ponga en el return
             snapShot.map( doc => ({
@@ -30,9 +30,6 @@ export class IngresoEgresoService {
           )
         )
       )
-      .subscribe( algo => {
-        console.log(algo);
-      })
   }
 
 }
