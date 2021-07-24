@@ -16,6 +16,7 @@ export class IngresoEgresoService {
     .collection('items')
     .add({ ...ingresoEgreso })
   }
+  //Comentario des de Golden
 
   //para estar pendiente de lo que suceda
   initIngresoEgresoListener(uid?: string) {
@@ -30,6 +31,10 @@ export class IngresoEgresoService {
           )
         )
       )
+  }
+
+  EliminarIngresoEgresos(uidItem: string) {
+      return this.fireStore.doc(`${ this.authService.user.uid }/ingreso-egreso/items/${ uidItem }`).delete();
   }
 
 }
