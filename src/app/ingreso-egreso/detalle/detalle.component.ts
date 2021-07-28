@@ -1,27 +1,34 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Pipe } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { GlobalState } from 'src/app/app.reducer';
-import { IngresoEgresoModel } from '../../models/ingreso-egreso.model';
+import { ArrayPruebaOrden, IngresoEgresoModel } from '../../models/ingreso-egreso.model';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import * as actionIngresoEgreso from '../ingreso-egreso.actions'
+
 import { IngresoEgresoService } from '../../service/ingreso-egreso.service';
 import { SweetAlertService } from 'src/app/service/sweetAlert.service';
 
+import {OrdenUsuariosPipe} from 'src/app/pipes/orden-usuario.pipe'
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.component.html',
   styles: [
   ],
-  providers: [SweetAlertService]
+  providers: [SweetAlertService, OrdenUsuariosPipe]
 })
 export class DetalleComponent implements OnInit, OnDestroy {
   ingresosEgresosDetalle: IngresoEgresoModel[] = [];
+  userPople = [
+    { Nombre: '2. Francisco', Apellido: 'Blanco'}, { Nombre: '4. Juan', Apellido: 'Blanco'}, { Nombre: '3. Jaime', Apellido: 'Blanco'}, { Nombre: '1. Andres', Apellido: 'Blanco'}
+  ]
+  arrayNombres: ArrayPruebaOrden[] = [];
   ingresoEgresoSubs!: Subscription;
   private mensajes = {
     msjExitoso: 'registro',
 }
-  constructor(private store: Store<GlobalState>, private ingresoEgresoService: IngresoEgresoService, private alertService: SweetAlertService) { }
+  constructor(private store: Store<GlobalState>, private ingresoEgresoService: IngresoEgresoService, private alertService: SweetAlertService,
+    private ordenPipe: OrdenUsuariosPipe)
+  { this.arrayNombres = this.ordenPipe.transform(this.userPople)  }
 
   ngOnInit(): void {
    this.ingresoEgresoSubs = this.store.select('ingresosEgresos')
@@ -30,7 +37,9 @@ export class DetalleComponent implements OnInit, OnDestroy {
      )
     .subscribe( ({ items }) => {
       this.ingresosEgresosDetalle = items
-    })
+    });
+
+
   }
   ngOnDestroy() {
       this.ingresoEgresoSubs.unsubscribe();

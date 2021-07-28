@@ -15,7 +15,7 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let items of ingresosEgresosDetalle">
+                        <tr *ngFor="let items of ingresosEgresosDetalle | ordenIngreso">
                             <td>{{ items.descripcion }}</td>
                             <td>{{ items.monto | currency}}</td>
                             <td [class.text-success]="items.tipo === 'ingreso'" [class.text-danger]="items.tipo === 'egreso'">
@@ -30,8 +30,14 @@
                     </tbody>
 
                 </table>
-
-
+                <div *ngFor="let item of arrayNombres ">
+                    <label for="">{{ item.Nombre | Upper  }}</label>&nbsp;
+                    <label for="">{{ item.Apellido | Upper }}</label>
+                </div>
+                <div *ngFor="let item of arrayNombres | ordenParameters: false ">
+                    <label for="">{{ item.Nombre   }}</label>&nbsp;
+                    <label for="">{{ item.Apellido | Upper }}</label>
+                </div>
             </div>
         </div>
     </div>

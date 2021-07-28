@@ -24,6 +24,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
+import { OrdenUsuariosPipe } from './pipes/orden-usuario.pipe';
+import { UppercasePipe } from './pipes/uppercase.pipe';
+import { OrdenParametersPipe } from './pipes/ordenParameters.pipe';
+import { TestComponent } from './ComponentTest/test/test.component';
 
 
 
@@ -41,7 +45,11 @@ import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    OrdenIngresoPipe
+    OrdenIngresoPipe,
+    OrdenUsuariosPipe,
+    UppercasePipe,
+    OrdenParametersPipe,
+    TestComponent
   ],
   imports: [
     BrowserModule,

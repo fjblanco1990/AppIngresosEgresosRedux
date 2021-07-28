@@ -9,5 +9,12 @@ export class IngresoEgresoModel {
     }
 }
 
+export class ArrayPruebaOrden {
+    constructor(
+        public Nombre: string,
+        public Apellido: string
+    ){}
+}
+
 
 
