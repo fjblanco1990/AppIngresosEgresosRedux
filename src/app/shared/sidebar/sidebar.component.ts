@@ -11,11 +11,12 @@ import { GlobalState } from 'src/app/app.reducer';
   ]
 })
 export class SidebarComponent implements OnInit {
-
+  userConecte?: string = '';
   constructor(private authService: AuthService, private router: Router, private store:Store<GlobalState>) { }
 
   ngOnInit(): void {
-
+    this.store.select('user')
+    .subscribe( ({ user }) => this.userConecte = user?.nombre);
   }
 
   logout() {

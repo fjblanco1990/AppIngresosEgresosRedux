@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ArrayPruebaOrden } from '../models/ingreso-egreso.model';
 import * as _ from 'underscore';
 
 @Pipe({

@@ -28,10 +28,7 @@ import { OrdenUsuariosPipe } from './pipes/orden-usuario.pipe';
 import { UppercasePipe } from './pipes/uppercase.pipe';
 import { OrdenParametersPipe } from './pipes/ordenParameters.pipe';
 import { TestComponent } from './ComponentTest/test/test.component';
-
-
-
-
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -52,6 +49,7 @@ import { TestComponent } from './ComponentTest/test/test.component';
     TestComponent
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     AppRoutingModule,

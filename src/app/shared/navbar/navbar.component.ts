@@ -15,7 +15,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select('user')
-    .subscribe( ({ user }) => this.infoUser = user);
+    .subscribe( ({ user }) =>{
+      !this.infoUser? this.infoUser = user: this.infoUser = null;
+    });
   }
 
   //comentario desde golden

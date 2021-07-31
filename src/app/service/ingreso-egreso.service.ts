@@ -7,12 +7,15 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class IngresoEgresoService {
 
   constructor(private fireStore: AngularFirestore, private authService: AuthService) { }
 
   crearIngresoEgreso(ingresoEgreso: IngresoEgresoModel) {
-    return this.fireStore.doc(`${ this.authService.user.uid }/ingreso-egreso`)
+    const uid = this.authService.user.uid;
+    delete ingresoEgreso.uid;
+    return this.fireStore.doc(`${ uid }/ingreso-egreso`)
     .collection('items')
     .add({ ...ingresoEgreso })
   }
@@ -20,7 +23,8 @@ export class IngresoEgresoService {
 
   //para estar pendiente de lo que suceda
   initIngresoEgresoListener(uid?: string) {
-      return this.fireStore.collection(`${uid}/ingreso-egreso/items`).snapshotChanges()
+      return this.fireStore.collection(`${uid}/ingreso-egreso/items`)
+      .snapshotChanges()
       .pipe(
         map( snapShot =>  // sirve para retornar lo que venga en sanpshotpara barrer cada uno de los elementos y retorna lo que se ponga en el return
             snapShot.map( doc => ({
@@ -34,7 +38,8 @@ export class IngresoEgresoService {
   }
 
   EliminarIngresoEgresos(uidItem: string) {
-      return this.fireStore.doc(`${ this.authService.user.uid }/ingreso-egreso/items/${ uidItem }`).delete();
+    const uid  = this.authService.user.uid;
+      return this.fireStore.doc(`${ uid }/ingreso-egreso/items/${ uidItem }`).delete();
   }
 
 }
