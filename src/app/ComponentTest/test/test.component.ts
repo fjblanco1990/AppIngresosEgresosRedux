@@ -20,22 +20,22 @@ export class TestComponent implements OnInit {
     this.store.select('ingresosEgresos')
     .subscribe(
       ({ items }) => {
-        this.mostrarIngresos = items,
-        console.log(items);
+        this.mostrarIngresos = items
+      
       }
     );
 
     this.store.select('user')
     .subscribe(
       ({ user }) => {
-        this.mostrarInfoUser  = user;
-         console.log( user );
+        this.mostrarInfoUser  = user
+
       }
     );
 
     this.store.select('ui')
     .subscribe(
-      ({ isLoading }) => { this.MostrarLoading = isLoading, console.log( isLoading ); }
+      ({ isLoading }) => { this.MostrarLoading = isLoading; }
     )
 
   }
