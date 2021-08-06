@@ -9,6 +9,7 @@ import { IngresoEgresoService } from '../../service/ingreso-egreso.service';
 import { SweetAlertService } from 'src/app/service/sweetAlert.service';
 
 import {OrdenUsuariosPipe} from 'src/app/pipes/orden-usuario.pipe'
+import { AppStateWhitIngresoEgreso } from '../ingreso-egreso.reducer';
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.component.html',
@@ -23,7 +24,7 @@ export class DetalleComponent implements OnInit, OnDestroy {
   private mensajes = {
     msjExitoso: 'registro',
 }
-  constructor(private store: Store<GlobalState>, private ingresoEgresoService: IngresoEgresoService, private alertService: SweetAlertService,
+  constructor(private store: Store<AppStateWhitIngresoEgreso>, private ingresoEgresoService: IngresoEgresoService, private alertService: SweetAlertService,
     private ordenPipe: OrdenUsuariosPipe)
   {   }
 

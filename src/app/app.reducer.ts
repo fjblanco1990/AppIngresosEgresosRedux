@@ -6,7 +6,7 @@ import * as ingresosEgreso from './ingreso-egreso/ingreso-egreso.reducer';
 export interface GlobalState {
    ui: ui.State,
    user: auth.State,
-   ingresosEgresos: ingresosEgreso.State
+   // ingresosEgresos: ingresosEgreso.State
 }
 
 
@@ -14,5 +14,5 @@ export interface GlobalState {
 export const appReducers: ActionReducerMap<GlobalState> = {
    ui: ui.uiReducer,
    user: auth.authReducer,
-   ingresosEgresos: ingresosEgreso.ingresoEgresoReducer
+   // ingresosEgresos: ingresosEgreso.ingresoEgresoReducer
 }

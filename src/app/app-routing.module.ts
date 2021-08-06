@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AuhtGuard } from './service/auht.guard';
 
 
 const routes: Routes = [
@@ -9,7 +10,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   // Cargar un modulo mediante lazyload en angular asi:
   {
+
     path: '',
+    // canActivate: [ AuhtGuard ],
+    canLoad: [ AuhtGuard ],
     loadChildren: () => import('./ingreso-egreso/ingreso-egreso.module').then( module => module.IngresoEgresoModule)
   },
   { path: '**', redirectTo: ''},

@@ -5,6 +5,7 @@ import { IngresoEgresoModel } from '../../models/ingreso-egreso.model';
 import { Label, MultiDataSet } from 'ng2-charts';
 import { subscribeOn } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { AppStateWhitIngresoEgreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -25,7 +26,7 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
 
   estadisticaSubs!: Subscription;
 
-  constructor(private store: Store<GlobalState>) {}
+  constructor(private store: Store<AppStateWhitIngresoEgreso>) {}
 
   ngOnInit(): void {
     this.estadisticaSubs = this.store.select('ingresosEgresos')

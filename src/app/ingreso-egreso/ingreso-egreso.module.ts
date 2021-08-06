@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardRoutesModule } from '../dashboard/dashboard-routes.module';
+import { StoreModule } from '@ngrx/store';
+import { ingresoEgresoReducer } from './ingreso-egreso.reducer';
 
 
 
@@ -35,7 +37,10 @@ import { DashboardRoutesModule } from '../dashboard/dashboard-routes.module';
     ReactiveFormsModule,
     ChartsModule,
     SharedModule,
-    DashboardRoutesModule
+    DashboardRoutesModule,
+    //para cargar los store con lazyload
+    StoreModule.forFeature( 'ingresosEgresos',ingresoEgresoReducer)
+
   ],
   exports: []
 })
